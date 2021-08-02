@@ -5,8 +5,8 @@ import styles from "./App.module.css";
 const Quote = (props) => {
   return (
     <>
-      <p>{props.quote}</p>
-      <p>{props.author}</p>
+      <p className={styles.Quote}>{props.quote}</p>
+      <p className={styles.Author}>- {props.author}</p>
     </>
   );
 };
@@ -18,7 +18,7 @@ function App() {
     axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
-        setQuotes(response.data.slice(0, 2));
+        setQuotes(response.data.slice(0, 1));
         setLoading(false);
       })
       .catch((error) => console.log(error));
@@ -37,10 +37,22 @@ function App() {
     <>
       <div className={styles.Quote_box}>
         {quote}
-        <div>Twitter</div>
-        <div>Tumblir</div>
+        {/* <p className={styles.Quote}>
+          Imagine we have an app ( let's call it JB). Our phones have JB
+          installed.
+        </p>
+        <p className={styles.Author}>- Kelvin Pella</p> */}
+        <div className={styles.IconContainer}>
+          <div className={styles.TwitterContainer}>
+            <img src="https://cutt.ly/LQkkG8t" alt="Twitter logo" />
+          </div>
+          <div className={styles.TumblrContainer}>
+            <img src="https://cutt.ly/8QkHvyL" alt="Tumblr logo" />
+          </div>
+        </div>
+        <button className={styles.NewQuote}>New Quote</button>
       </div>
-      <p>by hezag</p>
+      <p className={styles.Hezag}>by hezag</p>
     </>
   );
 }

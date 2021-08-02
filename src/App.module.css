@@ -13,9 +13,72 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
 .Quote_box {
   max-width: 100%;
   max-height: 100%;
+  padding: 5px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(2, auto);
+  grid-template-areas:
+    "text text"
+    ". author"
+    "icon newQuote";
+  background-color: rgb(23, 53, 151);
+}
+
+.Quote {
+  font-size: 1.5rem;
+  max-width: 100%;
+  grid-area: text;
+  text-align: center;
+}
+.Author {
+  grid-area: author;
+  justify-self: end;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.IconContainer {
+  grid-area: icon;
+  justify-self: start;
+  display: flex;
+}
+.NewQuote {
+  grid-area: newQuote;
+  color: black;
+  justify-self: end;
+  outline: none;
+  border-radius: 3px;
+  padding: 5px;
+  border: 0px;
+}
+
+.TwitterContainer,
+.TumblrContainer {
+  max-width: 2rem;
+  max-height: 2rem;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  justify-self: start;
+  border-radius: 3px;
+  margin: 5px;
+}
+.TwitterContainer img,
+.TumblrContainer img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.Hezag {
+  text-align: center;
+  font-size: 0.8rem;
 }
