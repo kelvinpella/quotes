@@ -1,0 +1,25 @@
+.IconContainer {
+  grid-area: icon;
+  justify-self: start;
+  display: flex;
+}
+
+
+.TwitterContainer,
+.TumblrContainer {
+  max-width: 2rem;
+  max-height: 2rem;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  justify-self: start;
+  border-radius: 3px;
+  margin: 5px;
+}
+.TwitterContainer img,
+.TumblrContainer img {
+  max-width: 90%;
+  max-height: 90%;
+}

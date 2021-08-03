@@ -1,0 +1,9 @@
+.NewQuote {
+  grid-area: newQuote;
+  color: black;
+  justify-self: end;
+  outline: none;
+  border-radius: 3px;
+  padding: 5px;
+  border: 0px;
+}
