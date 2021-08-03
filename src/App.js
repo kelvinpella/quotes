@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import styles from "./App.module.css";
 import Footer from "./components/Footer/Footer";
@@ -6,51 +6,52 @@ import Icons from "./components/Icons/Icons";
 import NewQuote from "./components/NewQuote/NewQuote";
 import Quote from "./components/Quote/Quote";
 
-const App = () => {
-  const [quotes, setQuotes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+class App extends Component {
+  state = { newQuote: [], quotes: [], loading: true };
+  componentDidMount = () => {
     axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
-        setQuotes(response.data.slice(0, 101));
-        setLoading(false);
+        this.setState({ quotes: response.data, loading: false }, () => {
+          this.newQuoteHandler();
+        });
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  let quote;
-  let trial;
-  const newQuoteHandler = () => {
+  };
+  newQuoteHandler = () => {
     // create random number to 100
+    console.log("clicked");
     let randomIndex = Math.floor(Math.random() * 100 + 1);
-    let newQuote = quotes.filter((quote, index) => {
+    let singleQuote = this.state.quotes.filter((quote, index) => {
       return index === randomIndex;
     });
-    quote = newQuote.map((quote, index) => {
-      return <Quote key={index} quote={quote.text} author={quote.author} />;
+    this.setState({
+      newQuote: singleQuote.map((quote, index) => {
+        return <Quote key={index} quote={quote.text} author={quote.author} />;
+      }),
     });
-    console.log("clicked");
+
+    // return singleQuote.map((quote, index) => {
+    //   return <Quote key={index} quote={quote.text} author={quote.author} />;
+    // });
   };
 
-  if (loading) {
-    quote = "Loading quotes...";
-  } else {
-    newQuoteHandler();
-  }
+  render() {
+    const { newQuote, quotes, loading } = this.state;
 
-  return (
-    <>
-      <div className={styles.Quote_box}>
-        {trial}
-        {quote}
-        <Icons />
-        <NewQuote />
-      </div>
-      <Footer />
-    </>
-  );
-};
+    return (
+      <>
+        <div className={styles.Quote_box}>
+          {newQuote}
+          <Icons />
+          <NewQuote loadNewQuote={this.newQuoteHandler}/>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+}
 
 export default App;
