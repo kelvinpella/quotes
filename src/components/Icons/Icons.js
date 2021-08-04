@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./Icons.module.css";
+import twitterLogo from "../../assets/twitter.png";
+import tumblrLogo from "../../assets/tumblr.png";
 const Icons = (props) => {
   return (
     <div className={styles.IconContainer}>
@@ -9,7 +11,7 @@ const Icons = (props) => {
         rel="noreferrer"
         className={styles.TwitterContainer}
       >
-        <img src="https://cutt.ly/LQkkG8t" alt="Twitter logo" />
+        <img src={twitterLogo} alt="Twitter logo" />
       </a>
       <a
         href="https://www.tumblr.com/"
@@ -17,7 +19,7 @@ const Icons = (props) => {
         rel="noreferrer"
         className={styles.TumblrContainer}
       >
-        <img src="https://cutt.ly/8QkHvyL" alt="Tumblr logo" />
+        <img src={tumblrLogo} alt="Tumblr logo" />
       </a>
     </div>
   );

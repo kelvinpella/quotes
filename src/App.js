@@ -8,18 +8,40 @@ import Quote from "./components/Quote/Quote";
 
 class App extends Component {
   state = { newQuote: [], quotes: [], loading: true };
+  compone;
   componentDidMount = () => {
     axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
         this.setState({ quotes: response.data, loading: false }, () => {
           this.newQuoteHandler();
+          // document.querySelector("#root").style.cssText = `
+          // background-color:red;
+          // width:100%;
+          // height:100%;
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          // justify-content: center;
+          // `;
         });
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  componentWillMount() {
+    document.querySelector("#root").style.cssText = `
+          background-color:red;
+          width:100%;
+          height:100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color:yellow
+          `;
+  }
   newQuoteHandler = () => {
     // create random number to 100
     console.log("clicked");
@@ -32,21 +54,18 @@ class App extends Component {
         return <Quote key={index} quote={quote.text} author={quote.author} />;
       }),
     });
-
-    // return singleQuote.map((quote, index) => {
-    //   return <Quote key={index} quote={quote.text} author={quote.author} />;
-    // });
   };
 
   render() {
-    const { newQuote, quotes, loading } = this.state;
+    const { newQuote, loading } = this.state;
 
     return (
       <>
         <div className={styles.Quote_box}>
+          {loading && <p className={styles.Loading}>"</p>}
           {newQuote}
           <Icons />
-          <NewQuote loadNewQuote={this.newQuoteHandler}/>
+          <NewQuote loadNewQuote={this.newQuoteHandler} />
         </div>
         <Footer />
       </>
