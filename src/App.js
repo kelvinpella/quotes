@@ -45,17 +45,25 @@ class App extends Component {
     for (let i = 0; i < 2; i++) {
       parent.children[i].style.cssText = `color:${color}`;
       parent.children[i].animate([{ opacity: 1 }, { opacity: 0 }], {
-        duration: 2000,
+        duration: 1500,
         direction: "reverse",
         easing: "ease-in-out",
       });
     }
+    // change properties of button
+    parent.children[3].style.cssText = `background-color:${color};transition:background-color 1s linear`;
+    // change properties of image container as well
+    const imageOuterContainer = parent.children[2];
+    for (let imageContainer of imageOuterContainer.children) {
+      imageContainer.style.cssText = `background-color:${color};transition:background-color 1s linear`;
+    }
+
     this.newQuoteHandler();
   };
 
   newQuoteHandler = () => {
-    // create random number to 100
-    let randomIndex = Math.floor(Math.random() * 100 + 1);
+    // create random number up nearly equal to number of quotes
+    let randomIndex = Math.floor(Math.random() * this.state.quotes.length);
     let singleQuote = this.state.quotes.filter((quote, index) => {
       return index === randomIndex;
     });

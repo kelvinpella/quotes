@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-content: center;
 }
 .Root {
   width: 100%;
@@ -22,6 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-content: center;
   padding: 10px;
   animation: root 2s ease-in-out;
 }
@@ -66,5 +68,26 @@ body {
   }
   100% {
     opacity: 0;
+  }
+}
+/* tablet */
+@media (min-width: 480px) {
+  .Quote_box {
+    width: 80%;
+    max-height: 100%;
+  }
+}
+/* laptop/desktop */
+@media (min-width: 768px) {
+  .Quote_box {
+    width: 50%;
+    max-height: 100%;
+  }
+}
+/* wider screens */
+@media (min-width: 1280px) {
+  .Quote_box {
+    width: 40%;
+    max-height: 100%;
   }
 }
