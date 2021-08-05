@@ -12,7 +12,7 @@ class App extends Component {
     await axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
-        this.setState({ quotes: response.data, loading: false }, () => {});
+        this.setState({ quotes: response.data, loading: false });
       })
       .catch((error) => {
         console.log(error);
@@ -36,7 +36,10 @@ class App extends Component {
       color = "#342224";
     }
     //modify root element initial properties
-    document.querySelector("#root").style.backgroundColor = color;
+    document.querySelector(
+      "#root"
+    ).style.cssText = `background-color:${color};transition:background-color 1s linear`;
+
     // change opacity from 0 to 1, and color  when displaying new quote
     let parent = document.querySelector("#root").firstChild;
     for (let i = 0; i < 2; i++) {

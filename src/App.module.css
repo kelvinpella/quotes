@@ -37,7 +37,7 @@ body {
     "text text"
     ". author"
     "icon newQuote";
-  background-color: rgb(23, 53, 151);
+  background-color: rgb(255, 255, 255);
 }
 .Loading {
   font-family: "Arimo", sans-serif;
@@ -53,7 +53,7 @@ body {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.5;
   }
 }
 
