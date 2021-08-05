@@ -3,7 +3,7 @@
   max-width: 100%;
   grid-area: text;
   text-align: center;
-  animation: quoteAuthor 1s ease-in;
+  animation: quoteAuthor 1.5s ease-in;
 }
 .Quote::before {
   content: '" ';
@@ -14,18 +14,17 @@
 .Author {
   grid-area: author;
   justify-self: end;
+  margin-right: 5px;
   text-align: center;
   margin-bottom: 2rem;
-  animation: quoteAuthor 1s ease-in;
+  animation: quoteAuthor 1.5s ease-in;
 }
 
 @keyframes quoteAuthor {
   0% {
-    opacity: 0.5;
+    opacity: 0;
   }
-  50% {
-    opacity: 0.8;
-  }
+
   100% {
     opacity: 1;
   }
