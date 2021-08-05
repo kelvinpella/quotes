@@ -21,10 +21,22 @@ class App extends Component {
         console.log(error);
       });
   };
-
+  modifyQuote = () => {
+    // change opacity from 0 to 1 when displaying new quote
+    let parent = document.querySelector("#root").firstChild;
+    for (let i = 0; i < 2; i++) {
+      parent.children[i].animate([{ opacity: 1 }, { opacity: 0 }], {
+        duration: 2000,
+        direction: "reverse",
+        easing: "ease-in-out",
+      });
+    }
+    this.newQuoteHandler();
+  };
   newQuoteHandler = () => {
     // create random number to 100
     console.log("clicked");
+
     let randomIndex = Math.floor(Math.random() * 100 + 1);
     let singleQuote = this.state.quotes.filter((quote, index) => {
       return index === randomIndex;
@@ -38,6 +50,7 @@ class App extends Component {
 
   render() {
     const { newQuote, loading } = this.state;
+    // change size of parent container for the app
     document.querySelector("#root").setAttribute("class", `${styles.Root}`);
 
     return (
@@ -46,7 +59,7 @@ class App extends Component {
           {loading && <p className={styles.Loading}>"</p>}
           {newQuote}
           <Icons />
-          <NewQuote loadNewQuote={this.newQuoteHandler} />
+          <NewQuote loadNewQuote={this.modifyQuote} />
         </div>
         <Footer />
       </>

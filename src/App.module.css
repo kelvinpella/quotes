@@ -58,14 +58,7 @@ body {
     opacity: 1;
   }
 }
-/* @keyframes quoteBox {
-  0% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-} */
+
 @keyframes onLoad {
   0% {
     opacity: 1;
