@@ -8,7 +8,7 @@
 }
 
 body {
-  /* background-color: white; */
+  background-color: black;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -17,7 +17,16 @@ body {
   justify-content: center;
   padding: 10px;
 }
-
+.Root {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: root 1s linear;
+}
 .Quote_box {
   width: 100%;
   max-height: 100%;
@@ -31,7 +40,6 @@ body {
     ". author"
     "icon newQuote";
   background-color: rgb(23, 53, 151);
-  animation: quoteBox 2s linear ease-in-out;
 }
 .Loading {
   font-family: "Arimo", sans-serif;
@@ -42,15 +50,22 @@ body {
   animation: onLoad 1s ease-in-out 0.5s infinite alternate;
 }
 
-@keyframes quoteBox {
-  0%,
-  30%,
-  57%,
+@keyframes root {
+  0% {
+    opacity: 0.5;
+  }
   100% {
-    width: 100%;
-    height: 100%;
+    opacity: 1;
   }
 }
+/* @keyframes quoteBox {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
 @keyframes onLoad {
   0% {
     opacity: 1;

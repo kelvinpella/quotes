@@ -8,40 +8,20 @@ import Quote from "./components/Quote/Quote";
 
 class App extends Component {
   state = { newQuote: [], quotes: [], loading: true };
-  compone;
+
   componentDidMount = () => {
     axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
         this.setState({ quotes: response.data, loading: false }, () => {
           this.newQuoteHandler();
-          // document.querySelector("#root").style.cssText = `
-          // background-color:red;
-          // width:100%;
-          // height:100%;
-          // display: flex;
-          // flex-direction: column;
-          // align-items: center;
-          // justify-content: center;
-          // `;
         });
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  componentWillMount() {
-    document.querySelector("#root").style.cssText = `
-          background-color:red;
-          width:100%;
-          height:100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color:yellow
-          `;
-  }
+
   newQuoteHandler = () => {
     // create random number to 100
     console.log("clicked");
@@ -58,6 +38,7 @@ class App extends Component {
 
   render() {
     const { newQuote, loading } = this.state;
+    document.querySelector("#root").setAttribute("class", `${styles.Root}`);
 
     return (
       <>
