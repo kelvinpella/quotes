@@ -1,1 +1,1 @@
-Random Quote Machine
+Random Quotes generator --> https://quotes-543fd.web.app/
