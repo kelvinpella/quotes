@@ -43,28 +43,29 @@ body {
 }
 .Loading {
   font-family: "Arimo", sans-serif;
-  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  font-size: 4rem;
   font-weight: bold;
   grid-area: text;
   text-align: center;
-  animation: onLoad 1s ease-in-out 0.5s infinite alternate;
+  animation: onLoad 2s ease-in-out infinite alternate;
 }
 
 @keyframes root {
   0% {
     opacity: 0;
   }
-  100% {
+  50% {
     opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 @keyframes onLoad {
   0% {
     opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
   }
   100% {
     opacity: 0;

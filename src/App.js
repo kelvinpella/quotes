@@ -5,20 +5,22 @@ import Footer from "./components/Footer/Footer";
 import Icons from "./components/Icons/Icons";
 import NewQuote from "./components/NewQuote/NewQuote";
 import Quote from "./components/Quote/Quote";
+import Error from "./components/Error/Error";
 
 class App extends Component {
-  state = { newQuote: [], quotes: [], loading: true };
+  state = { newQuote: [], quotes: [], loading: true, error: "" };
   componentDidMount = async () => {
     await axios
       .get("https://type.fit/api/quotes")
       .then((response) => {
         this.setState({ quotes: response.data, loading: false });
+        this.newQuoteHandler();
+        this.modifyQuote();
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error is", error);
+        this.setState({ error: error.message, loading: false });
       });
-    this.newQuoteHandler();
-    this.modifyQuote();
   };
 
   randomColorGenerator = () => {
@@ -75,18 +77,25 @@ class App extends Component {
   };
 
   render() {
-    const { newQuote, loading } = this.state;
+    const { newQuote, loading, error } = this.state;
+    let rendered;
     // change size of parent container(#root) for the app
     document.querySelector("#root").setAttribute("class", `${styles.Root}`);
-
-    return (
-      <>
+    if (!error) {
+      rendered = (
         <div className={styles.Quote_box}>
           {loading && <p className={styles.Loading}>"</p>}
           {newQuote}
           <Icons />
           <NewQuote loadNewQuote={this.modifyQuote} />
         </div>
+      );
+    } else {
+      rendered = <Error error={error} />;
+    }
+    return (
+      <>
+        {rendered}
         <Footer />
       </>
     );

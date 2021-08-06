@@ -4,7 +4,6 @@
   display: flex;
 }
 
-
 .TwitterContainer,
 .TumblrContainer {
   max-width: 2rem;
@@ -16,9 +15,20 @@
   justify-self: start;
   border-radius: 3px;
   margin: 5px;
+  animation: icon 4s ease-in-out;
 }
 .TwitterContainer img,
 .TumblrContainer img {
   max-width: 90%;
   max-height: 90%;
+}
+
+@keyframes icon {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
