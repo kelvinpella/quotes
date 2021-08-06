@@ -18,7 +18,6 @@ class App extends Component {
         this.modifyQuote();
       })
       .catch((error) => {
-        console.log("Error is", error);
         this.setState({ error: error.message, loading: false });
       });
   };
